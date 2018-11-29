@@ -27,7 +27,7 @@ namespace TicTakToe.TicTakToeGame
         {
             if (GameBoard.BoardState[i, j] != CellState.Free )
             {
-                throw new InvalidEnumArgumentException();
+                return;
             }
 
             var newState = GetNextState();
