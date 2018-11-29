@@ -20,6 +20,8 @@ namespace TicTakToe
             _game = new Game();
         }
 
+        public Game Game => _game;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public RelayCommand<string> Move
@@ -39,6 +41,7 @@ namespace TicTakToe
         private void MoveOn(int i, int j)
         {
             _game.MakeTurn(i, j);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Game)));
         }
 
         [NotifyPropertyChangedInvocator]

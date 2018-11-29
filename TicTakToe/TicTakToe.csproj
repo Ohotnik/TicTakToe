@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\GameConverter.cs" />
     <Compile Include="TicTakToeGame\Board.cs" />
     <Compile Include="TicTakToeGame\CellState.cs" />
     <Compile Include="TicTakToeGame\Game.cs" />

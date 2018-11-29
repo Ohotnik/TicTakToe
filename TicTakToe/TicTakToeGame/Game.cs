@@ -50,6 +50,12 @@ namespace TicTakToe.TicTakToeGame
             return (xCount == oCount) ? CellState.X : CellState.O;
         }
 
+        public bool GetIsGameOver()
+        {
+            //Todo: Check if someone won!
+            return false;
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
