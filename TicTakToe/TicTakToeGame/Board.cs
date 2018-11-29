@@ -6,9 +6,9 @@
 
         public Board()
         {
-            BoardState = new CellState[2, 2];
-            for (var i = 0; i < 2; i++)
-            for (var j = 0; j < 2; j++)
+            BoardState = new CellState[3, 3];
+            for (var i = 0; i <= 2; i++)
+            for (var j = 0; j <= 2; j++)
             {
                 BoardState[i, j] = CellState.Free;
             }

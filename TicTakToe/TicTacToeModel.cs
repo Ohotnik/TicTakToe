@@ -30,7 +30,7 @@ namespace TicTakToe
                               (s) =>
                               {
                                   var parsed = int.Parse(s);
-                                  MoveOn(parsed, parsed);
+                                  MoveOn(parsed / 3, parsed % 3);
                               });
                 return _move00;
             }

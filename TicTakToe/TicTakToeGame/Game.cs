@@ -25,6 +25,11 @@ namespace TicTakToe.TicTakToeGame
 
         public void MakeTurn(int i, int j)
         {
+            if (GameBoard.BoardState[i, j] != CellState.Free )
+            {
+                throw new InvalidEnumArgumentException();
+            }
+
             var newState = GetNextState();
             GameBoard.BoardState[i, j] = newState;
         }
@@ -33,8 +38,8 @@ namespace TicTakToe.TicTakToeGame
         {
             var xCount = 0;
             var oCount = 0;
-            for (var i = 0; i < 2; i++)
-            for (var j = 0; j < 2; j++)
+            for (var i = 0; i <= 2; i++)
+            for (var j = 0; j <= 2; j++)
             {
                 if (GameBoard.BoardState[i, j] == CellState.X)
                     xCount++;
