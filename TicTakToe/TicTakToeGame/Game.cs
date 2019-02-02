@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using TicTakToe.Properties;
 
 namespace TicTakToe.TicTakToeGame
@@ -7,6 +9,7 @@ namespace TicTakToe.TicTakToeGame
     public class Game : INotifyPropertyChanged
     {
         private Board _gameBoard;
+        private string _message;
 
         public Board GameBoard
         {
@@ -18,20 +21,55 @@ namespace TicTakToe.TicTakToeGame
             }
         }
 
+        public string Message
+        {
+            get => _message;
+            set
+            {
+                _message = value;
+                RaisePropertyChanged(nameof(Message));
+            }
+        }
+
+        public bool GameOver => _gameOver;
+
+        private bool _gameOver;
+
         public Game()
         {
+            _gameOver = false;
             GameBoard = new Board();
+            Message = "Game is started!";
         }
 
         public void MakeTurn(int i, int j)
         {
-            if (GameBoard.BoardState[i, j] != CellState.Free )
-            {
+            if (GameOver)
                 return;
+
+            if (GameBoard.BoardState[i, j] != CellState.Free)
+            {
+                //Todo: Write some message to the user that move is incorrect
+                Message = "No";
+
+                var timer = new Timer((_) =>
+                {
+                    Message = "Next turn";
+                }, null, 5000, Timeout.Infinite);
+                return;
+
             }
 
             var newState = GetNextState();
             GameBoard.BoardState[i, j] = newState;
+
+            if (GetIsGameOver() != CellState.Free)
+            {
+                Message = "So Game Over";
+                _gameOver = true;
+                return;
+            }
+            
         }
 
         private CellState GetNextState()
@@ -50,10 +88,75 @@ namespace TicTakToe.TicTakToeGame
             return (xCount == oCount) ? CellState.X : CellState.O;
         }
 
-        public bool GetIsGameOver()
+        public CellState GetIsGameOver()
         {
-            //Todo: Check if someone won!
-            return false;
+            var xCount = 0;
+            var oCount = 0;
+
+            for (var i = 0; i <= 2; i++)
+            {
+                xCount = 0;
+                oCount = 0;
+                for (var j = 0; j <= 2; j++)
+                {
+                    if (GameBoard.BoardState[i, j] == CellState.X)
+                        xCount++;
+                    if (GameBoard.BoardState[i, j] == CellState.O)
+                        oCount++;
+                }
+                if (xCount == 3)
+                    return CellState.X;
+                if (oCount == 3)
+                    return CellState.O;
+
+            }
+            for (var j = 0; j <= 2; j++)
+            {
+                xCount = 0;
+                oCount = 0;
+                for (var i = 0; i <= 2; i++)
+                {
+                    if (GameBoard.BoardState[i, j] == CellState.X)
+                        xCount++;
+                    if (GameBoard.BoardState[i, j] == CellState.O)
+                        oCount++;
+                }
+                if (xCount == 3)
+                    return CellState.X;
+                if (oCount == 3)
+                    return CellState.O;
+
+            }
+
+            xCount = 0;
+            oCount = 0;
+            for (var j = 0; j <= 2; j++)
+            {
+                if (GameBoard.BoardState[j, j] == CellState.X)
+                    xCount++;
+                if (GameBoard.BoardState[j, j] == CellState.O)
+                    oCount++;
+                if (xCount == 3)
+                    return CellState.X;
+                if (oCount == 3)
+                    return CellState.O;
+            }
+
+            xCount = 0;
+            oCount = 0;
+
+            for (var j = 0; j <= 2; j++)
+            {
+                if (GameBoard.BoardState[2-j, j] == CellState.X)
+                    xCount++;
+                if (GameBoard.BoardState[2-j, j] == CellState.O)
+                    oCount++;
+                if (xCount == 3)
+                    return CellState.X;
+                if (oCount == 3)
+                    return CellState.O;
+            }
+            return CellState.Free;
         }
 
 

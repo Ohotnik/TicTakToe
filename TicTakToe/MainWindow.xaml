@@ -23,7 +23,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Content="Try it"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="{Binding Game.Message}"/>
         <Button Grid.Column="0" Grid.Row ="1" Command="{Binding Move}" CommandParameter="0"
                 Content="{Binding Game, Converter={StaticResource GameCellToStringConverter}, ConverterParameter=0}"/>
         <Button Grid.Column="1" Grid.Row ="1" Command="{Binding Move}" CommandParameter="1"

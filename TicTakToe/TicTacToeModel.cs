@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TicTakToe.Properties;
 using TicTakToe.TicTakToeGame;
@@ -42,6 +43,15 @@ namespace TicTakToe
         {
             _game.MakeTurn(i, j);
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Game)));
+
+            if (_game.GameOver)
+            {
+                var timer = new Timer((_) =>
+                {
+                    _game = new Game();
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Game)));
+                }, null, 5000, Timeout.Infinite);
+            }
         }
 
         [NotifyPropertyChangedInvocator]
