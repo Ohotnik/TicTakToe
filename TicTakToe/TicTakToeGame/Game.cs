@@ -63,7 +63,7 @@ namespace TicTakToe.TicTakToeGame
             var newState = GetNextState();
             GameBoard.BoardState[i, j] = newState;
 
-            if (GetIsGameOver() != CellState.Free)
+            if (GetIsGameOver() != GameState.InProgress)
             {
                 Message = "So Game Over";
                 _gameOver = true;
@@ -88,10 +88,12 @@ namespace TicTakToe.TicTakToeGame
             return (xCount == oCount) ? CellState.X : CellState.O;
         }
 
-        public CellState GetIsGameOver()
+        public GameState GetIsGameOver()
+
         {
             var xCount = 0;
             var oCount = 0;
+            var FreeCount = 0;
 
             for (var i = 0; i <= 2; i++)
             {
@@ -105,9 +107,9 @@ namespace TicTakToe.TicTakToeGame
                         oCount++;
                 }
                 if (xCount == 3)
-                    return CellState.X;
+                    return GameState.XWon;
                 if (oCount == 3)
-                    return CellState.O;
+                    return GameState.OWon;
 
             }
             for (var j = 0; j <= 2; j++)
@@ -122,9 +124,9 @@ namespace TicTakToe.TicTakToeGame
                         oCount++;
                 }
                 if (xCount == 3)
-                    return CellState.X;
+                    return GameState.XWon;
                 if (oCount == 3)
-                    return CellState.O;
+                    return GameState.OWon;
 
             }
 
@@ -137,9 +139,9 @@ namespace TicTakToe.TicTakToeGame
                 if (GameBoard.BoardState[j, j] == CellState.O)
                     oCount++;
                 if (xCount == 3)
-                    return CellState.X;
+                    return GameState.XWon;
                 if (oCount == 3)
-                    return CellState.O;
+                    return GameState.OWon;
             }
 
             xCount = 0;
@@ -147,16 +149,28 @@ namespace TicTakToe.TicTakToeGame
 
             for (var j = 0; j <= 2; j++)
             {
-                if (GameBoard.BoardState[2-j, j] == CellState.X)
+                if (GameBoard.BoardState[2 - j, j] == CellState.X)
                     xCount++;
-                if (GameBoard.BoardState[2-j, j] == CellState.O)
+                if (GameBoard.BoardState[2 - j, j] == CellState.O)
                     oCount++;
                 if (xCount == 3)
-                    return CellState.X;
+                    return GameState.XWon;
                 if (oCount == 3)
-                    return CellState.O;
+                    return GameState.OWon;
             }
-            return CellState.Free;
+
+            for (var i = 0; i <= 2; i++)
+                for (var j = 0; j <= 2; j++)
+                {
+                    
+
+                    {
+                        if (GameBoard.BoardState[i, j] == CellState.Free)
+                           return GameState.InProgress;
+                    }
+
+                }
+            return GameState.NobadyWon;
         }
 
 

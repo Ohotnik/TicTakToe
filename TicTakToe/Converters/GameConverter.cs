@@ -22,11 +22,13 @@ namespace TicTakToe.Converters
         /// </summary>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null || parameter == null)
+
+            var realValue = value as Game;
+
+            if (parameter == null || realValue == null)
                 return "";
 
-            var cell = int.Parse((string) parameter);
-            var realValue = (Game) value;
+            var cell = int.Parse((string)parameter);
 
             int i = cell / 3;
             int j = cell % 3;
@@ -40,8 +42,6 @@ namespace TicTakToe.Converters
             {
                 return "O";
             }
-
-            //if someone won - return "Game over"
 
             return "";
         }

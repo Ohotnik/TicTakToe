@@ -14,9 +14,10 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="107*" />
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="126*" />
+            <RowDefinition Height="127*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -25,22 +26,22 @@
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0" Grid.Column="0" Content="{Binding Game.Message}"/>
         <Button Grid.Column="0" Grid.Row ="1" Command="{Binding Move}" CommandParameter="0"
-                Content="{Binding Game, Converter={StaticResource GameCellToStringConverter}, ConverterParameter=0}"/>
+                Content="{Binding Game, Converter={StaticResource GameCellToStringConverter}, ConverterParameter=0}" Grid.RowSpan="2"/>
         <Button Grid.Column="1" Grid.Row ="1" Command="{Binding Move}" CommandParameter="1"
-                Content="{Binding Game, Converter={StaticResource GameCellToStringConverter}, ConverterParameter=1}"/>
+                Content="{Binding Game, Converter={StaticResource GameCellToStringConverter}, ConverterParameter=1}" Grid.RowSpan="2"/>
         <Button Grid.Column="2" Grid.Row ="1" Command="{Binding Move}" CommandParameter="2"
-                Content="{Binding Game, Converter={StaticResource GameCellToStringConverter}, ConverterParameter=2}"/>
-        <Button Grid.Column="0" Grid.Row ="2" Command="{Binding Move}" CommandParameter="3"
+                Content="{Binding Game, Converter={StaticResource GameCellToStringConverter}, ConverterParameter=2}" Grid.RowSpan="2"/>
+        <Button Grid.Column="0" Grid.Row ="3" Command="{Binding Move}" CommandParameter="3"
                 Content="{Binding Game, Converter={StaticResource GameCellToStringConverter}, ConverterParameter=3}"/>
-        <Button Grid.Column="1" Grid.Row ="2" Command="{Binding Move}" CommandParameter="4"
+        <Button Grid.Column="1" Grid.Row ="3" Command="{Binding Move}" CommandParameter="4"
                 Content="{Binding Game, Converter={StaticResource GameCellToStringConverter}, ConverterParameter=4}"/>
-        <Button Grid.Column="2" Grid.Row ="2" Command="{Binding Move}" CommandParameter="5"
+        <Button Grid.Column="2" Grid.Row ="3" Command="{Binding Move}" CommandParameter="5"
                 Content="{Binding Game, Converter={StaticResource GameCellToStringConverter}, ConverterParameter=5}"/>
-        <Button Grid.Column="0" Grid.Row ="3" Command="{Binding Move}" CommandParameter="6"
+        <Button Grid.Column="0" Grid.Row ="4" Command="{Binding Move}" CommandParameter="6"
                 Content="{Binding Game, Converter={StaticResource GameCellToStringConverter}, ConverterParameter=6}"/>
-        <Button Grid.Column="1" Grid.Row ="3" Command="{Binding Move}" CommandParameter="7"
+        <Button Grid.Column="1" Grid.Row ="4" Command="{Binding Move}" CommandParameter="7"
                 Content="{Binding Game, Converter={StaticResource GameCellToStringConverter}, ConverterParameter=7}"/>
-        <Button Grid.Column="2" Grid.Row ="3" Command="{Binding Move}" CommandParameter="8"
+        <Button Grid.Column="2" Grid.Row ="4" Command="{Binding Move}" CommandParameter="8"
                 Content="{Binding Game, Converter={StaticResource GameCellToStringConverter}, ConverterParameter=8}"/>
     </Grid>
 </Window>

@@ -3,6 +3,8 @@
    public enum GameState
     {
         InProgress,
-        Finished,
+        XWon,
+        OWon,
+        NobadyWon,
     }
 }
