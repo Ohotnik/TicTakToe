@@ -10,7 +10,7 @@
         d:DataContext="{d:DesignInstance Type=wpf:MainWindowModel}"
         Title="Tic Tac Toe! 1.0" ResizeMode="NoResize" Height="900" Width="600">
     <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Height="30">
+        <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Height="55">
             <StatusBarItem>
                 <TextBlock Text="{Binding StatusMessage}" />
             </StatusBarItem>

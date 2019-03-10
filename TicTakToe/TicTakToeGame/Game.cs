@@ -8,6 +8,7 @@ namespace TicTakToe.TicTakToeGame
 {
     public class Game : INotifyPropertyChanged
     {
+       
         private Board _gameBoard;
         private string _message;
 
@@ -34,6 +35,7 @@ namespace TicTakToe.TicTakToeGame
         public bool GameOver => _gameOver;
 
         private bool _gameOver;
+        private object timer1;
 
         public Game()
         {
@@ -55,18 +57,20 @@ namespace TicTakToe.TicTakToeGame
                 var timer = new Timer((_) =>
                 {
                     Message = "Next turn";
-                }, null, 5000, Timeout.Infinite);
+                }, null, 500, Timeout.Infinite);
                 return;
 
             }
 
             var newState = GetNextState();
             GameBoard.BoardState[i, j] = newState;
-
+                
             if (GetIsGameOver() != GameState.InProgress)
             {
                 Message = "So Game Over";
+
                 _gameOver = true;
+
                 return;
             }
 

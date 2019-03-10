@@ -15,7 +15,7 @@
         <Button Grid.Column="2" Grid.Row ="2" Command="{Binding StartGame}" Content="Start game"/>
         <Button Grid.Column="4" Grid.Row ="2" Command="{Binding ChangeNamePlayer2}" Content="Change name P2"/>
         <Button Grid.Column="0" Grid.Row ="4" Command="{Binding ChangeColorPlayer2}" Content="Change color P2"/>
-        <Button Grid.Column="2" Grid.Row ="4" Command="{Binding Help}" Content="HELP!!!"/>
+        <Button Grid.Column="2" Grid.Row ="4" Command="{Binding Help}" Content="?"/>
         <Button Grid.Column="4" Grid.Row ="4" Command="{Binding Settings}" Content="Settings"/>
     </ItemsControl>
 </UserControl>
