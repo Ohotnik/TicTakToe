@@ -69,7 +69,7 @@ namespace TicTakToe.TicTakToeGame
                 _gameOver = true;
                 return;
             }
-            
+
         }
 
         private CellState GetNextState()
@@ -93,7 +93,6 @@ namespace TicTakToe.TicTakToeGame
         {
             var xCount = 0;
             var oCount = 0;
-            var FreeCount = 0;
 
             for (var i = 0; i <= 2; i++)
             {
@@ -162,7 +161,7 @@ namespace TicTakToe.TicTakToeGame
             for (var i = 0; i <= 2; i++)
                 for (var j = 0; j <= 2; j++)
                 {
-                    
+
 
                     {
                         if (GameBoard.BoardState[i, j] == CellState.Free)
@@ -175,8 +174,6 @@ namespace TicTakToe.TicTakToeGame
 
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
         protected virtual void RaisePropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

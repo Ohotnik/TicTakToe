@@ -1,0 +1,19 @@
+﻿<Window x:Class="TicTakToe.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TicTakToe"
+        xmlns:converters="clr-namespace:TicTakToe.Converters"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=local:MainWindowModel}"
+        Title="Tic Tac Toe! 1.0" ResizeMode="NoResize" Height="900" Width="600">
+    <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Height="30">
+            <StatusBarItem>
+                <TextBlock Text="{Binding StatusMessage}" />
+            </StatusBarItem>
+        </StatusBar>
+        <ContentControl DockPanel.Dock="Top" Content="{Binding CurrentControl}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+    </DockPanel>
+</Window>
