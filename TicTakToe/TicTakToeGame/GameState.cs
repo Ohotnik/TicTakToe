@@ -5,6 +5,6 @@
         InProgress,
         XWon,
         OWon,
-        NobadyWon,
+        Draw,
     }
 }

@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TicTakToe
+namespace TicTakToe.WPF
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainMenuView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainMenuViewControl : UserControl
     {
-        public MainWindow()
+        public MainMenuViewControl()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowModel();
         }
     }
 }

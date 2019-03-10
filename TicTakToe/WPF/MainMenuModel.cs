@@ -8,13 +8,34 @@ using System.Threading.Tasks;
 
 namespace TicTakToe.WPF
 {
-    public class MainMenuModel : INotifyPropertyChanged
+    public class MainMenuModel : IPageWithStatus
     {
+        private RelayCommand _startNewGame;
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public event Action<SetAction> RequestAction;
+
+        public string StatusMessage
+        {
+            get { return "Select action"; }
+        }
+
+        public RelayCommand StartGame
+        {
+            get
+            {
+                _startNewGame = _startNewGame ?? new RelayCommand(
+                              () =>
+                              {
+                                  RequestAction?.Invoke(SetAction.NewGame);
+                              });
+                return _startNewGame;
+            }
         }
     }
 }

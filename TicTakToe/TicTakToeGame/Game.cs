@@ -161,15 +161,13 @@ namespace TicTakToe.TicTakToeGame
             for (var i = 0; i <= 2; i++)
                 for (var j = 0; j <= 2; j++)
                 {
-
-
                     {
                         if (GameBoard.BoardState[i, j] == CellState.Free)
                            return GameState.InProgress;
                     }
 
                 }
-            return GameState.NobadyWon;
+            return GameState.Draw;
         }
 
 

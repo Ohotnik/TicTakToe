@@ -1,12 +1,13 @@
-﻿<Window x:Class="TicTakToe.MainWindow"
+﻿<Window x:Class="TicTakToe.WPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TicTakToe"
         xmlns:converters="clr-namespace:TicTakToe.Converters"
+        xmlns:wpf="clr-namespace:TicTakToe.WPF"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance Type=local:MainWindowModel}"
+        d:DataContext="{d:DesignInstance Type=wpf:MainWindowModel}"
         Title="Tic Tac Toe! 1.0" ResizeMode="NoResize" Height="900" Width="600">
     <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <StatusBar DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Height="30">

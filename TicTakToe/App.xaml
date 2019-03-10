@@ -3,10 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:TicTakToe"
              xmlns:wpf="clr-namespace:TicTakToe.WPF"
-             StartupUri="MainView.xaml">
+             StartupUri="WPF/MainView.xaml">
     <Application.Resources>
         <DataTemplate DataType="{x:Type wpf:GameModel}">
             <wpf:GameViewControl/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type wpf:MainMenuModel}">
+            <wpf:MainMenuViewControl/>
         </DataTemplate>
         <Style x:Key="GridItemsStyle"
                TargetType="ItemsControl">

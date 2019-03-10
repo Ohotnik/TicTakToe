@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace TicTakToe.WPF
 {
     /// <summary>
-    /// Interaction logic for MainMenuView.xaml
+    /// Interaction logic for MainMenuViewControl.xaml
     /// </summary>
-    public partial class MainMenuView : UserControl
+    public partial class MainMenuViewControl : UserControl
     {
-        public MainMenuView()
+        public MainMenuViewControl()
         {
             InitializeComponent();
         }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using TicTakToe.TicTakToeGame;
@@ -49,22 +50,12 @@ namespace TicTakToe.WPF
             {
                 var timer = new Timer((_) =>
                 {
-                    _game = new Game();
-                    NotifyPropertyChanged(nameof(TicTakToeGame.Game));
+                    RequestAction?.Invoke(SetAction.GameOver);
                 }, null, 5000, Timeout.Infinite);
             }
         }
 
-        #region PropertyChangeImplementation
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        #endregion
+        public event Action<SetAction> RequestAction;
 
         public string StatusMessage
         {
@@ -78,5 +69,16 @@ namespace TicTakToe.WPF
                 }
             }
         }
+
+        #region PropertyChangeImplementation
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        #endregion
     }
 }
