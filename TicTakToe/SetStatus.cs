@@ -10,7 +10,7 @@ using TicTakToe.TicTakToeGame;
 
 namespace TicTakToe
 {
-    public class SetStatus : IGameInformation, INotifyPropertyChanged
+    public class TurnirStatus : IGameInformation, INotifyPropertyChanged
     {
         private Dictionary<GameState,int> _currentStatus = new Dictionary<GameState,int>();
         private string _player1Name;
@@ -25,6 +25,11 @@ namespace TicTakToe
         public void Reset()
         {
             _currentStatus = new Dictionary<GameState, int>();
+        }
+
+        public void RegisterGameResult(GameState result)
+        {
+            _currentStatus[result] = _currentStatus[result] + 1;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

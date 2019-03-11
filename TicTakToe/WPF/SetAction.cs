@@ -13,6 +13,8 @@ namespace TicTakToe.WPF
         MainMenu,
         ChangePlayer1Name,
         Help,
-        GameOver
+        Player1Won,
+        Player2Won,
+        Draw,
     }
 }

@@ -8,8 +8,12 @@ namespace TicTakToe.TicTakToeGame
 {
     public class Game : INotifyPropertyChanged
     {
+        public GameState GameResult;
 
         private Board _gameBoard;
+        private string[] _cellAlreadyOccupiedMassage;
+        private Random _randomGenerator;
+        
         private string _message;
 
         public Board GameBoard
@@ -40,7 +44,22 @@ namespace TicTakToe.TicTakToeGame
         public const int No = 0;
 
         public Game()
-        {           
+        {
+            
+            _cellAlreadyOccupiedMassage = new string[10];
+            _cellAlreadyOccupiedMassage[0] = "No";
+            _cellAlreadyOccupiedMassage[1] = "Sorry bat no";
+            _cellAlreadyOccupiedMassage[2] = "You can't";
+            _cellAlreadyOccupiedMassage[3] = "So, you Seriously?";
+            _cellAlreadyOccupiedMassage[4] = "You can see. Tnis not free";
+            _cellAlreadyOccupiedMassage[5] = "later";
+            _cellAlreadyOccupiedMassage[6] = "Sorry";
+            _cellAlreadyOccupiedMassage[7] = "NO NO NO NO";
+            _cellAlreadyOccupiedMassage[8] = "I think it bad idea";
+            _cellAlreadyOccupiedMassage[9] = "...";
+
+            _randomGenerator = new Random();
+
             _gameOver = false;
             GameBoard = new Board();
             Message = "Game is started!";
@@ -54,24 +73,11 @@ namespace TicTakToe.TicTakToeGame
             if (GameBoard.BoardState[i, j] != CellState.Free)
             {
                 //Todo: Write some message to the user that move is incorrect
+                var count = _cellAlreadyOccupiedMassage.Length;
 
-                var randomGenerator = new Random();
-
-                var index = randomGenerator.Next(7);
-
-                string[] MessengNo = new string[10];
-                MessengNo[0] = "No";
-                MessengNo[1] = "Sorry bat no";
-                MessengNo[2] = "You can't";
-                MessengNo[3] = "So, you Seriously?";
-                MessengNo[4] = "You can see. Tnis not free";
-                MessengNo[5] = "later";
-                MessengNo[6] = "Sorry";
-                MessengNo[7] = "NO NO NO NO";
-                MessengNo[8] = "I think it bad idea";
-                MessengNo[9] = "...";
-
-                Message = MessengNo[index];
+                var index = _randomGenerator.Next(count);
+                   
+                Message = _cellAlreadyOccupiedMassage[index];
 
                 var timer = new Timer((_) =>
                 {
@@ -83,6 +89,8 @@ namespace TicTakToe.TicTakToeGame
 
             var newState = GetNextState();
             GameBoard.BoardState[i, j] = newState;
+
+           
                 
             if (GetIsGameOver() != GameState.InProgress)
             {
