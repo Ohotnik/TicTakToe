@@ -54,7 +54,7 @@ namespace TicTakToe.WPF
 
         private void HandleRequestedAction(SetAction requestedAction)
         {
-            // Тут ошыбка + если не 
+            // Тут ошыбка НЕ продолжаеться игра. Кидает сюда. 
            if (!_setActions.ContainsKey(requestedAction))
                throw new NotImplementedException($"Action {requestedAction} is not supported");
            _setActions[requestedAction].Invoke();

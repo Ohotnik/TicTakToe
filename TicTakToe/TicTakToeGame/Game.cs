@@ -8,7 +8,7 @@ namespace TicTakToe.TicTakToeGame
 {
     public class Game : INotifyPropertyChanged
     {
-       
+
         private Board _gameBoard;
         private string _message;
 
@@ -37,8 +37,10 @@ namespace TicTakToe.TicTakToeGame
         private bool _gameOver;
         private object timer1;
 
+        public const int No = 0;
+
         public Game()
-        {
+        {           
             _gameOver = false;
             GameBoard = new Board();
             Message = "Game is started!";
@@ -52,12 +54,29 @@ namespace TicTakToe.TicTakToeGame
             if (GameBoard.BoardState[i, j] != CellState.Free)
             {
                 //Todo: Write some message to the user that move is incorrect
-                Message = "No";
+
+                var randomGenerator = new Random();
+
+                var index = randomGenerator.Next(7);
+
+                string[] MessengNo = new string[10];
+                MessengNo[0] = "No";
+                MessengNo[1] = "Sorry bat no";
+                MessengNo[2] = "You can't";
+                MessengNo[3] = "So, you Seriously?";
+                MessengNo[4] = "You can see. Tnis not free";
+                MessengNo[5] = "later";
+                MessengNo[6] = "Sorry";
+                MessengNo[7] = "NO NO NO NO";
+                MessengNo[8] = "I think it bad idea";
+                MessengNo[9] = "...";
+
+                Message = MessengNo[index];
 
                 var timer = new Timer((_) =>
                 {
                     Message = "Next turn";
-                }, null, 500, Timeout.Infinite);
+                }, null, 2000, Timeout.Infinite);
                 return;
 
             }
