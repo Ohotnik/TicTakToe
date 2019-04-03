@@ -50,7 +50,7 @@ namespace TicTakToe.WPF
             {
                 var timer = new Timer((_) =>
                 {
-                    RequestAction?.Invoke(SetAction.GameOver);
+                    RequestAction?.Invoke(SetAction.Draw);
                 }, null, 5000, Timeout.Infinite);
             }
         }
