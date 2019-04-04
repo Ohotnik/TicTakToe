@@ -39,7 +39,7 @@ namespace TicTakToe.Converters
             if (realValue.GameBoard.BoardState[i, j] == CellState.O)
             {
                 //ToDo: Зробити так, щоб тут повертався нолик :)
-                return "O";
+                return SignsImages.O();
             }
 
             return "";
@@ -66,6 +66,16 @@ namespace TicTakToe.Converters
             img.EndInit();
             ImageBehavior.SetAnimatedSource(signX, img);
             return signX;
+        }
+        public static Image O()
+        {
+            var signO = new Image();
+            var img = new BitmapImage();
+            img.BeginInit();
+            img.UriSource = new Uri("/Images/SignO.gif", UriKind.Relative);
+            img.EndInit();
+            ImageBehavior.SetAnimatedSource(signO, img);
+            return signO;
         }
     }
 }
