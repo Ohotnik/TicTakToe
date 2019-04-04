@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Media.Imaging;
 using TicTakToe.TicTakToeGame;
+using WpfAnimatedGif;
 
 namespace TicTakToe.Converters
 {
@@ -14,7 +12,7 @@ namespace TicTakToe.Converters
     /// double non-equality to visibility converter.
     /// </summary>
     /// <author>MOP-121024</author>
-    [ValueConversion(typeof(Game), typeof(string))]
+    [ValueConversion(typeof(Game), typeof(Image))]
     public class GameCellToStringConverter : IValueConverter
     {
         /// <summary>
@@ -35,11 +33,12 @@ namespace TicTakToe.Converters
 
             if (realValue.GameBoard.BoardState[i, j] == CellState.X)
             {
-                return "X";
+                return SignsImages.X();
             }
 
             if (realValue.GameBoard.BoardState[i, j] == CellState.O)
             {
+                //ToDo: Зробити так, щоб тут повертався нолик :)
                 return "O";
             }
 
@@ -52,6 +51,21 @@ namespace TicTakToe.Converters
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             throw new NotImplementedException();
+        }
+    }
+
+    public static class SignsImages
+    {
+
+        public static Image X()
+        {
+            var signX = new Image();
+            var img = new BitmapImage();
+            img.BeginInit();
+            img.UriSource = new Uri("/Images/SignX.gif", UriKind.Relative);
+            img.EndInit();
+            ImageBehavior.SetAnimatedSource(signX, img);
+            return signX;
         }
     }
 }
