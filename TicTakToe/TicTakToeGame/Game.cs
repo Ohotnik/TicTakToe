@@ -39,7 +39,6 @@ namespace TicTakToe.TicTakToeGame
         public bool GameOver => _gameOver;
 
         private bool _gameOver;
-        private object timer1;
 
         public const int No = 0;
 

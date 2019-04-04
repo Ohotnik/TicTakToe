@@ -50,6 +50,9 @@ namespace TicTakToe.WPF
             {
                 var timer = new Timer((_) =>
                 {
+                    //ToDo: тут завжди викликається з параметром .Draw.
+                    // Але це ж не вірно! Можна ж і виграти! 
+                    // Треба викликати (Invoke) не з нічиєю, а з реальним результатом гри!
                     RequestAction?.Invoke(SetAction.Draw);
                 }, null, 5000, Timeout.Infinite);
             }
