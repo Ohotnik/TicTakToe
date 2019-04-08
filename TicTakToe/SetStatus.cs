@@ -29,10 +29,19 @@ namespace TicTakToe
 
         public void RegisterGameResult(GameState result)
         {
-            //ToDo: Виправити це. Воно намагається прочитати зі словника, але в словнику ще нічого не має і воно падає
-            // Треба спочатку перевірити чи є значення в словнику (_currentStatus.Contains(result) і якщо є
-            // то додати до вже існуючого (те як є зараз), а якщо немає - записати 1.
-            _currentStatus[result] = _currentStatus[result] + 1;
+            _currentStatus.ContainsKey(result);
+
+            if (_currentStatus.ContainsKey(result))
+            {
+                _currentStatus[result] = _currentStatus[result] + 1;
+            }
+            else
+            {
+                _currentStatus[result] = 1;
+            } 
+
+
+           
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

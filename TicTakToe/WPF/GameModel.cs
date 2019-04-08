@@ -11,6 +11,7 @@ namespace TicTakToe.WPF
         private RelayCommand<string> _move00;
         private Game _game;
         private string _statusMessage;
+        private Timer _timer;
 
         public Game Game => _game;
 
@@ -48,12 +49,26 @@ namespace TicTakToe.WPF
 
             if (_game.GameOver)
             {
-                var timer = new Timer((_) =>
+                _timer = new Timer((_) =>
                 {
-                    //ToDo: тут завжди викликається з параметром .Draw.
-                    // Але це ж не вірно! Можна ж і виграти! 
-                    // Треба викликати (Invoke) не з нічиєю, а з реальним результатом гри!
-                    RequestAction?.Invoke(SetAction.Draw);
+                    var winner = _game.GetGameState();
+
+                    if (winner == GameState.XWon)
+                    {
+                        RequestAction?.Invoke(SetAction.Player1Won);
+                    }
+                    else if (winner == GameState.OWon)
+                    {
+                        RequestAction?.Invoke(SetAction.Player2Won);
+                    }
+                    else if (winner == GameState.Draw)
+                    {
+                        RequestAction?.Invoke(SetAction.Draw);
+                    }
+                    else
+                    {
+                        throw new ArgumentException($"State {winner} is not hanlded");
+                    }
                 }, null, 5000, Timeout.Infinite);
             }
         }

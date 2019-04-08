@@ -136,5 +136,17 @@
     <Resource Include="Images\SignO.gif" />
     <Resource Include="Images\SignX.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\RedX.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BlueO.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BlueO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\RedX.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

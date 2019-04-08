@@ -71,8 +71,7 @@ namespace TicTakToe.TicTakToeGame
 
             if (GameBoard.BoardState[i, j] != CellState.Free)
             {
-                //Todo: Write some message to the user that move is incorrect
-                var count = _cellAlreadyOccupiedMassage.Length;
+               var count = _cellAlreadyOccupiedMassage.Length;
 
                 var index = _randomGenerator.Next(count);
                    
@@ -91,7 +90,7 @@ namespace TicTakToe.TicTakToeGame
 
            
                 
-            if (GetIsGameOver() != GameState.InProgress)
+            if (GetGameState() != GameState.InProgress)
             {
                 Message = "So Game Over";
 
@@ -118,8 +117,7 @@ namespace TicTakToe.TicTakToeGame
             return (xCount == oCount) ? CellState.X : CellState.O;
         }
 
-        public GameState GetIsGameOver()
-
+        public GameState GetGameState()
         {
             var xCount = 0;
             var oCount = 0;

@@ -13,13 +13,17 @@
             <Image gif:ImageBehavior.AnimatedSource="/Images/woh.gif" />
         </Button>
         <Button Grid.Column="2" Grid.Row ="0" Command="{Binding NewRound}" Content ="New round"/>
-        <Button Grid.Column="4" Grid.Row ="0" Command="{Binding ChangeColorPlayer1}" Content="Change color P1" />
+        <Button Grid.Column="4" Grid.Row ="0" Command="{Binding ChangeColorPlayer1}">
+            <Image gif:ImageBehavior.AnimatedSource="/Images/ReddX.png" />
+        </Button>
         <Button Grid.Column="0" Grid.Row ="2" Command="{Binding ChangeNamePlayer1}" Content="Change name P1"/>
         <Button Grid.Column="2" Grid.Row ="2" Command="{Binding StartGame}">
             <Image gif:ImageBehavior.AnimatedSource="/Images/start.gif" />
         </Button>
         <Button Grid.Column="4" Grid.Row ="2" Command="{Binding ChangeNamePlayer2}" Content="Change name P2"/>
-        <Button Grid.Column="0" Grid.Row ="4" Command="{Binding ChangeColorPlayer2}" Content="Change color P2"/>
+        <Button Grid.Column="0" Grid.Row ="4" Command="{Binding ChangeColorPlayer2}">
+            <Image gif:ImageBehavior.AnimatedSource="/Images/BlueO.png" />
+        </Button>
         <Button Grid.Column="2" Grid.Row ="4" Command="{Binding Help}" Content="?"/>
         <Button Grid.Column="4" Grid.Row ="4" Command="{Binding Settings}" Content="Settings"/>
     </ItemsControl>
