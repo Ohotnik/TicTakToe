@@ -13,7 +13,7 @@ namespace TicTakToe.TicTakToeGame
         private Board _gameBoard;
         private string[] _cellAlreadyOccupiedMassage;
         private Random _randomGenerator;
-        
+
         private string _message;
 
         public Board GameBoard
@@ -44,7 +44,7 @@ namespace TicTakToe.TicTakToeGame
 
         public Game()
         {
-            
+
             _cellAlreadyOccupiedMassage = new string[10];
             _cellAlreadyOccupiedMassage[0] = "No";
             _cellAlreadyOccupiedMassage[1] = "Sorry bat no";
@@ -63,6 +63,18 @@ namespace TicTakToe.TicTakToeGame
             GameBoard = new Board();
             Message = "Game is started!";
         }
+        public partial class Form : Form
+            {
+            void makeMusic()
+            {
+                
+            }
+
+       
+
+
+            }
+
 
         public void MakeTurn(int i, int j)
         {

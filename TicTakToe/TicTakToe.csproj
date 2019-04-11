@@ -63,6 +63,7 @@
     <Compile Include="TicTakToeGame\GameState.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="IGameInformation.cs" />
+    <Compile Include="WPF\Sound.cs" />
     <Compile Include="WPF\MainWindowModel.cs" />
     <Compile Include="WPF\GameModel.cs" />
     <Compile Include="WPF\GameView.xaml.cs">
@@ -150,6 +151,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Start.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\Sund1.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
