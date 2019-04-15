@@ -42,8 +42,11 @@ namespace TicTakToe.TicTakToeGame
 
         public const int No = 0;
 
+        public int f = 0;
+
         public Game()
         {
+           
 
             _cellAlreadyOccupiedMassage = new string[10];
             _cellAlreadyOccupiedMassage[0] = "No";
@@ -57,23 +60,15 @@ namespace TicTakToe.TicTakToeGame
             _cellAlreadyOccupiedMassage[8] = "I think it bad idea";
             _cellAlreadyOccupiedMassage[9] = "...";
 
+            
+
             _randomGenerator = new Random();
 
             _gameOver = false;
             GameBoard = new Board();
             Message = "Game is started!";
         }
-        public partial class Form : Form
-            {
-            void makeMusic()
-            {
-                
-            }
-
-       
-
-
-            }
+        
 
 
         public void MakeTurn(int i, int j)
@@ -86,9 +81,20 @@ namespace TicTakToe.TicTakToeGame
                var count = _cellAlreadyOccupiedMassage.Length;
 
                 var index = _randomGenerator.Next(count);
-                   
-                Message = _cellAlreadyOccupiedMassage[index];
 
+                if (f == 100)
+                {
+                    Message = "sit all night";
+                }
+                else if (f == 50)
+                {
+                    Message = "It will be interesting to see what happens next";
+                }
+                else
+                {
+                    f++;
+                    Message = _cellAlreadyOccupiedMassage[index];
+                }
                 var timer = new Timer((_) =>
                 {
                     Message = "Next turn";
