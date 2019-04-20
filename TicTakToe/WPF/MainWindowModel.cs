@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Media;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using TicTakToe.TicTakToeGame;
 
 namespace TicTakToe.WPF
@@ -12,6 +14,7 @@ namespace TicTakToe.WPF
         private TurnirStatus _turnirStatus;
 
         private Dictionary<SetAction, Action> _setActions = new Dictionary<SetAction, Action>();
+        private SoundPlayer _player;
 
         public MainWindowModel()
         {
@@ -23,6 +26,18 @@ namespace TicTakToe.WPF
             _setActions[SetAction.Player1Won] = () => HandleGameOver(GameState.XWon);
             _setActions[SetAction.Player2Won] = () => HandleGameOver(GameState.OWon);
             CurrentControl = new MainMenuModel();
+
+            var sri = Application.GetResourceStream(new Uri(@"pack://application:,,,/Sound/Music.wav"));
+
+            if ((sri != null))
+            {
+                using (var s = sri.Stream)
+                {
+                    _player = new System.Media.SoundPlayer(s);
+                    _player.Load();
+                    _player.PlayLooping();
+                }
+            }
         }
 
         private void HandleGameOver (GameState gameResult)

@@ -43,24 +43,21 @@ namespace TicTakToe.TicTakToeGame
         public const int No = 0;
 
         public int f = 0;
+        public (int i, int j) LastMove { get; private set; }
 
         public Game()
         {
-           
-
             _cellAlreadyOccupiedMassage = new string[10];
             _cellAlreadyOccupiedMassage[0] = "No";
-            _cellAlreadyOccupiedMassage[1] = "Sorry bat no";
+            _cellAlreadyOccupiedMassage[1] = "Sorry but no";
             _cellAlreadyOccupiedMassage[2] = "You can't";
-            _cellAlreadyOccupiedMassage[3] = "So, you Seriously?";
-            _cellAlreadyOccupiedMassage[4] = "You can see. Tnis not free";
-            _cellAlreadyOccupiedMassage[5] = "later";
+            _cellAlreadyOccupiedMassage[3] = "So, are you Seriously?";
+            _cellAlreadyOccupiedMassage[4] = "You can see. This not free";
+            _cellAlreadyOccupiedMassage[5] = "Later";
             _cellAlreadyOccupiedMassage[6] = "Sorry";
             _cellAlreadyOccupiedMassage[7] = "NO NO NO NO";
-            _cellAlreadyOccupiedMassage[8] = "I think it bad idea";
+            _cellAlreadyOccupiedMassage[8] = "I think it's a bad idea";
             _cellAlreadyOccupiedMassage[9] = "...";
-
-            
 
             _randomGenerator = new Random();
 
@@ -68,9 +65,7 @@ namespace TicTakToe.TicTakToeGame
             GameBoard = new Board();
             Message = "Game is started!";
         }
-        
-
-
+ 
         public void MakeTurn(int i, int j)
         {
             if (GameOver)
@@ -84,7 +79,7 @@ namespace TicTakToe.TicTakToeGame
 
                 if (f == 100)
                 {
-                    Message = "sit all night";
+                    Message = "Sit all night";
                 }
                 else if (f == 50 || f == 60)
                 {
@@ -107,6 +102,7 @@ namespace TicTakToe.TicTakToeGame
             var newState = GetNextState();
             GameBoard.BoardState[i, j] = newState;
 
+            LastMove = (i, j);
            
                 
             if (GetGameState() != GameState.InProgress)

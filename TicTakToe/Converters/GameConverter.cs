@@ -31,15 +31,17 @@ namespace TicTakToe.Converters
             int i = cell / 3;
             int j = cell % 3;
 
+            var lastMove = (i == realValue.LastMove.i) && (j == realValue.LastMove.j);
+
             if (realValue.GameBoard.BoardState[i, j] == CellState.X)
             {
-                return SignsImages.X();
+                return lastMove ? SignsImages.AnimatedX() : SignsImages.X();
             }
 
             if (realValue.GameBoard.BoardState[i, j] == CellState.O)
             {
-               
-                return SignsImages.O();
+               //ToDo : fix this ;)
+                return lastMove ? SignsImages.AnimatedO() : SignsImages.AnimatedO();
             }
 
             return "";
@@ -56,8 +58,18 @@ namespace TicTakToe.Converters
 
     public static class SignsImages
     {
-
         public static Image X()
+        {
+            var RedX = new Image();
+            var img = new BitmapImage();
+            img.BeginInit();
+            img.UriSource = new Uri("/Images/RedX.gif", UriKind.Relative);
+            img.EndInit();
+            RedX.Source = img;
+            return RedX;
+        }
+
+        public static Image AnimatedX()
         {
             var RedX = new Image();
             var img = new BitmapImage();
@@ -67,7 +79,7 @@ namespace TicTakToe.Converters
             ImageBehavior.SetAnimatedSource(RedX, img);
             return RedX;
         }
-        public static Image O()
+        public static Image AnimatedO()
         {
             var BlueO = new Image();
             var img = new BitmapImage();
