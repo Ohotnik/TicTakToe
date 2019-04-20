@@ -28,6 +28,11 @@ namespace TicTakToe.WPF
         private void HandleGameOver (GameState gameResult)
         {
             _turnirStatus.RegisterGameResult(gameResult);
+            //ToDo: start new game here if we already won 3 times :) 
+            //you can get it from TurnirStatus (_turnirStatus).
+            //Він сам по собі не з'виться - треба зробити проерті (property) який буде повертати внутрішній стан (_currentStatus) 
+            //назовні, абе нехай (краще) сам тернір можна спитати чин е завершений він. і якщо не завершений то треба створити нову гру, 
+            // а не виставити в головлне меню. Дивися як працює NewGame :)
             CurrentControl = new MainMenuModel();
         }
 
