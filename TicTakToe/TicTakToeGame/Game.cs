@@ -84,7 +84,7 @@ namespace TicTakToe.TicTakToeGame
 
                 if (f == 100)
                 {
-                    Message = "sit all night";
+                    Message = "Sit all night";
                 }
                 else if (f == 50 || f == 60)
                 {

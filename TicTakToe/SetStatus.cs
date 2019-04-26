@@ -29,8 +29,6 @@ namespace TicTakToe
 
         public void RegisterGameResult(GameState result)
         {
-            _currentStatus.ContainsKey(result);
-
             if (_currentStatus.ContainsKey(result))
             {
                 _currentStatus[result] = _currentStatus[result] + 1;
@@ -38,10 +36,12 @@ namespace TicTakToe
             else
             {
                 _currentStatus[result] = 1;
-            } 
+            }    
+        }
 
-
-           
+        public GameState GetState()
+        {
+             
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
