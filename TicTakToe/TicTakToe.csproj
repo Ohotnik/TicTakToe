@@ -153,7 +153,7 @@
     <Resource Include="Images\Start.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\Sund1.wav" />
+    <Resource Include="Sound\Music.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
